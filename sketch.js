@@ -1,6 +1,7 @@
 var PLAY = 1;
 var END = 0;
 var gameState = PLAY;
+var jump;
 
 var trex, trex_running, trex_collided;
 var ground, invisibleGround, groundImage;
@@ -28,7 +29,7 @@ function preload(){
   obstacle4 = loadImage("obstacle4.png");
   obstacle5 = loadImage("obstacle5.png");
   obstacle6 = loadImage("obstacle6.png");
-  
+  jump = loadSound("jump.mp3");
   gameOverImg = loadImage("gameOver.png");
   restartImg = loadImage("restart.png");
 }
@@ -79,6 +80,7 @@ function draw() {
   
     if(keyDown("space") && trex.y >= 159) {
       trex.velocityY = -12;
+      jump.play();
     }
   
     trex.velocityY = trex.velocityY + 0.8
